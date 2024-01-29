@@ -184,10 +184,6 @@
       path: /Audio/Voice/Arachnid/arachnid_scream.ogg
     Laugh:
       path: /Audio/Voice/Arachnid/arachnid_laugh.ogg
-    Chitter:
-      path: /Audio/Voice/Arachnid/arachnid_chitter.ogg
-    Click:
-      path: /Audio/Voice/Arachnid/arachnid_click.ogg
 
 - type: emoteSounds
   id: UnisexDwarf
@@ -222,7 +218,7 @@
       collection: Whistles
   params:
     variation: 0.125
-    pitch: 0.75
+    pitchscale: 0.75
 
 - type: emoteSounds
   id: FemaleDwarf
@@ -257,7 +253,7 @@
       collection: Whistles
   params:
     variation: 0.125
-    pitch: 0.75
+    pitchscale: 0.75
 
 - type: emoteSounds
   id: UnisexMoth
@@ -329,6 +325,27 @@
   id: Bear
   sound:
     path: /Audio/Animals/bear.ogg
+    params:
+      variation: 0.125
+
+- type: emoteSounds
+  id: FleshPudgeEmote
+  sound:
+    path: /Audio/Animals/Flesh/flesh_pudge_dead.ogg
+    params:
+      variation: 0.125
+
+- type: emoteSounds
+  id: FleshWormEmote
+  sound:
+    path: /Audio/Animals/Flesh/flesh_worm_scream.ogg
+    params:
+      variation: 0.125
+
+- type: emoteSounds
+  id: FleshAbomEmote
+  sound:
+    path: /Audio/Animals/Flesh/abom_scream.ogg
     params:
       variation: 0.125
 

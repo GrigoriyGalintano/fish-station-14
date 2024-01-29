@@ -10,9 +10,6 @@ using Content.Shared.FixedPoint;
 using Content.Shared.Hands.EntitySystems;
 using Content.Shared.Store;
 using Robust.Server.GameObjects;
-using Robust.Shared.Audio;
-using Robust.Shared.Audio.Systems;
-using Robust.Shared.Player;
 
 namespace Content.Server.Store.Systems;
 
@@ -142,24 +139,31 @@ public sealed partial class StoreSystem
                 return;
         }
 
-        //check that we have enough money
-        foreach (var currency in listing.Cost)
+        if (!HandleBankTransaction(uid, component, msg, listing)) // backmen: currency
         {
-            if (!component.Balance.TryGetValue(currency.Key, out var balance) || balance < currency.Value)
+            //check that we have enough money
+            foreach (var currency in listing.Cost)
             {
-                return;
+                if (!component.Balance.TryGetValue(currency.Key, out var balance) || balance < currency.Value)
+                {
+                    return;
+                }
             }
-        }
-        //subtract the cash
-        foreach (var currency in listing.Cost)
-        {
-            component.Balance[currency.Key] -= currency.Value;
-        }
+
+            //subtract the cash
+            foreach (var currency in listing.Cost)
+            {
+                component.Balance[currency.Key] -= currency.Value;
+            }
+
+        } // backmen: currency
 
         //spawn entity
         if (listing.ProductEntity != null)
         {
             var product = Spawn(listing.ProductEntity, Transform(buyer).Coordinates);
+            var ev = new ItemPurchasedEvent(buyer);
+            RaiseLocalEvent(product, ref ev);
             _hands.PickupOrDrop(buyer, product);
         }
 
@@ -173,7 +177,7 @@ public sealed partial class StoreSystem
         //broadcast event
         if (listing.ProductEvent != null)
         {
-            RaiseLocalEvent(listing.ProductEvent);
+            RaiseLocalEvent(uid, listing.ProductEvent, true);
         }
 
         //log dat shit.
@@ -182,6 +186,8 @@ public sealed partial class StoreSystem
 
         listing.PurchaseAmount++; //track how many times something has been purchased
         _audio.PlayEntity(component.BuySuccessSound, msg.Session, uid); //cha-ching!
+
+        _PlayEject(uid); // backmen: currency
 
         UpdateUserInterface(buyer, uid, component);
     }

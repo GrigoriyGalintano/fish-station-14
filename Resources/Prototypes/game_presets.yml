@@ -7,6 +7,7 @@
   description: survival-description
   rules:
     - RampingStationEventScheduler
+    - WageScheduler #backmen: currency
 
 - type: gamePreset
   id: Extended
@@ -18,15 +19,7 @@
   description: extended-description
   rules:
   - BasicStationEventScheduler
-
-- type: gamePreset
-  id: Greenshift
-  alias:
-  - greenshift
-  - shittersafarideluxeedition
-  name: greenshift-title
-  showInVote: false #4boring4vote
-  description: greenshift-description
+  - WageScheduler #backmen: currency
 
 - type: gamePreset
   id: Secret
@@ -40,12 +33,37 @@
     - Secret
 
 - type: gamePreset
+  id: FleshCult
+  alias:
+    - fleshcult
+    - fs
+  name: flesh-cult-title
+  description: flesh-cult-description
+  showInVote: false
+  rules:
+    - FleshCult
+    - BasicStationEventScheduler
+
+- type: gamePreset
+  id: FleshCultAndTraitor
+  alias:
+    - madness
+    - fleshcultandtraitor
+  name: flesh-cult-and-traitor-title
+  showInVote: false
+  description: flesh-cult-and-traitor-description
+  rules:
+    - FleshCult
+    - Traitor
+    - BasicStationEventScheduler
+
+- type: gamePreset
   id: Sandbox
   alias:
     - sandbox
   name: sandbox-title
   description: sandbox-description
-  showInVote: false
+  showInVote: true
   maxPlayers: 5
   rules:
     - Sandbox
@@ -60,6 +78,7 @@
   rules:
     - Traitor
     - BasicStationEventScheduler
+    - WageScheduler #backmen: currency
 
 - type: gamePreset
   id: Deathmatch
@@ -84,18 +103,19 @@
   rules:
     - Nukeops
     - BasicStationEventScheduler
+    - WageScheduler #backmen: currency
 
 - type: gamePreset
-  id: Revolutionary
+  id: NukeopsTraitor
   alias:
-    - rev
-    - revs
-    - revolutionaries
-  name: rev-title
-  description: rev-description
+    - nukeopstraitor
+    - syndinukies
+  name: nukeops-traitor-title
+  description: nukeops-traitor-description
   showInVote: false
   rules:
-    - Revolutionary
+    - Nukeops
+    - Traitor
     - BasicStationEventScheduler
 
 - type: gamePreset
@@ -112,6 +132,7 @@
   rules:
   - Zombie
   - BasicStationEventScheduler
+  - WageScheduler #backmen: currency
 
 - type: gamePreset
   id: Pirates
@@ -123,3 +144,4 @@
   rules:
     - Pirates
     - BasicStationEventScheduler
+    - WageScheduler #backmen: currency

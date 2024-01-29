@@ -15,23 +15,23 @@
   id: ClothingOuterBaseLarge
   components:
   - type: Item
-    size: Huge
+    size: 80
   - type: Clothing
     slots:
     - outerClothing
   - type: ClothingSpeedModifier
     walkModifier: 0.9
     sprintModifier: 0.9
-  - type: HeldSpeedModifier
 
 - type: entity
   abstract: true
   parent: ClothingOuterBase
   id: ClothingOuterStorageBase
   components:
+  - type: Item
+    size: 10
   - type: Storage
-    grid:
-    - 0,0,2,1
+    capacity: 10
   - type: ContainerContainer
     containers:
       storagebase: !type:Container
@@ -71,9 +71,8 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.4
     sprintModifier: 0.6
-  - type: HeldSpeedModifier
   - type: Item
-    size: Ginormous
+    size: 121
   - type: Armor
     modifiers:
       coefficients:
@@ -90,6 +89,7 @@
   - type: GroupExamine
   - type: Tag
     tags:
+    - FullBodyOuter
     - Hardsuit
     - WhitelistChameleon
 
@@ -107,9 +107,11 @@
   - type: ClothingSpeedModifier
     walkModifier: 0.8
     sprintModifier: 0.8
-  - type: HeldSpeedModifier
   - type: Item
-    size: Huge
+    size: 80
+  - type: Tag
+    tags:
+      - FullBodyOuter
 
 - type: entity
   parent: ClothingOuterBase
@@ -125,11 +127,3 @@
       toggleable-clothing: !type:ContainerSlot {}
       storagebase: !type:Container
         ents: []
-
-- type: entity
-  abstract: true
-  parent: ClothingOuterBase
-  id: ClothingOuterBaseMedium
-  components:
-  - type: Item
-    size: Huge

@@ -39,7 +39,32 @@
   - type: MovementIgnoreGravity
   - type: IntrinsicRadioReceiver
   - type: ActiveRadio
-    receiveAllChannels: true
+    channels:
+    - Binary
+    - Common
+    - Command
+    - CentCom
+    - Engineering
+    - Medical
+    - Science
+    - Security
+    - Service
+    - Supply
+    - Syndicate
+    - Redorden
+    - CSH
+    - GROUPS_1
+    - GROUPS_2
+    - GROUPS_3
+    - GROUPS_4
+    - GROUPS_5
+    - GROUPS_6
+    - GROUPS_7
+    - GROUPS_8
+    - GROUPS_9
+    - GROUPS_0
+    - Binary
+    - Flesh
     globalReceive: true
   - type: Physics
     bodyType: KinematicController
@@ -110,21 +135,3 @@
       state: icon
     iconOn: Interface/Actions/ghostHearingToggled.png
     event: !type:ToggleGhostHearingActionEvent
-
-- type: entity
-  parent: MobObserver
-  id: MobObserverPremium
-  noSpawn: true
-  save: false
-  components:
-  - type: MovementSpeedModifier
-    baseSprintSpeed: 12
-    baseWalkSpeed: 8
-  - type: Sprite
-    overrideContainerOcclusion: true # Ghosts always show up regardless of where they're contained.
-    drawdepth: Ghosts
-    sprite: Mobs/Ghosts/ghost_premium.rsi
-    color: "#fff8"
-    layers:
-    - state: animated
-      shader: unshaded

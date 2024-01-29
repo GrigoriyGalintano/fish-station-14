@@ -60,8 +60,6 @@
   components:
   - type: NukeopsRule
     faction: Syndicate
-  - type: ThiefRule #the thieves come as an extension of another gamemode
-    ruleChance: 0.5
 
 - type: entity
   id: Pirates
@@ -71,24 +69,26 @@
   - type: PiratesRule
 
 - type: entity
+  id: Blob
+  parent: BaseGameRule
+  noSpawn: true
+  components:
+    - type: BlobRule
+
+- type: entity
   id: Traitor
   parent: BaseGameRule
   noSpawn: true
   components:
   - type: TraitorRule
-  - type: ThiefRule #the thieves come as an extension of another gamemode
-    ruleChance: 0.5
-    pacifistThieves: false # Corvax-MRP
 
 - type: entity
-  id: Revolutionary
+  id: FleshCult
   parent: BaseGameRule
   noSpawn: true
   components:
-  - type: RevolutionaryRule
-  - type: ThiefRule #the thieves come as an extension of another gamemode
-    ruleChance: 0.5
-    pacifistThieves: false # Corvax-MRP
+    - type: FleshCultRule
+      faction: Flesh
 
 - type: entity
   id: Sandbox

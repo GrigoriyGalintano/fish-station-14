@@ -36,9 +36,12 @@ namespace Content.Shared.Alert
         Internals,
         Toxins,
         Muted,
+        BlobResource,
+        BlobHealth,
         VowOfSilence,
         VowBroken,
         Essence,
+        MutationPoint,
         Corporeal,
         Bleed,
         Pacified,
@@ -49,9 +52,7 @@ namespace Content.Shared.Alert
         Debug5,
         Debug6,
         SuitPower,
-        BorgHealth,
-        BorgCrit,
-        BorgDead
+        BorgHealth
     }
 
 }
